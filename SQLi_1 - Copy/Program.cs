@@ -1,4 +1,4 @@
-﻿using System;
+Z﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,6 +17,7 @@ namespace SQLi_1
                 var pwd = Encrypt(args[1]);
                 Login(user, pwd);
 				var password = "1!.Acjjjj";
+				var password = "1!.Acjjj2222222";
             }
             catch  
             {
@@ -55,3 +56,4 @@ namespace SQLi_1
         }
     }
 }
+
