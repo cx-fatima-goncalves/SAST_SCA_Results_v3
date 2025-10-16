@@ -18,6 +18,7 @@ namespace SQLi_1
                 Login(user, pwd);
 				var password = "1!.Acjjjj";
 				var password = "1123456dD.";
+				var pass2 = "234444...DDD";
             }
             catch  
             {
@@ -56,4 +57,5 @@ namespace SQLi_1
         }
     }
 }
+
 
