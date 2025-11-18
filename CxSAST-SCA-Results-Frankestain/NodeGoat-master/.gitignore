@@ -1,31 +1,32 @@
-# Node modules
-node_modules
+package-lock.json
 
-# Logs and databases
-*.log
-*.db
-
-# OS files
-.DS_Store
-.DS_Store?
-._*
-.Spotlight-V100
-.Trashes
-Icon?
-
-# Idea stuff
-.idea/**
-
-# Zap output
-report*.html
-
-# e2e
-test/e2e/screenshots/
-test/e2e/videos/
-
-# ignore sensitive files
-.env.local
+# Environment variables
 .env
 
-# ignore Snyk Code scanner files
-.dccache
+# Logs
+logs
+*.log
+npm-debug.log*
+
+# Dependency directories
+node_modules
+
+# Optional npm cache directory
+.npm
+
+# sessions
+sessions
+
+# zsh Files
+.zshrc
+
+.DS_Store
+
+# Packaged files
+pkg
+
+# Tarballs and Archives
+.zip
+.tar.gz
+.gz
+.tgz

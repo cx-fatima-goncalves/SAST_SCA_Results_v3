@@ -1,0 +1,28 @@
+{
+	"rules": {
+        "prettier/prettier": "off",
+        "no-unused-vars": "warn",
+		"no-use-before-define": "warn",
+        "no-console": "off",
+        "func-names": "off",
+        "no-process-exit": "off",
+        "object-shorthand": "off",
+		"no-multi-str": 0,
+        "indent": ["warn", 2],
+        "linebreak-style": "off",
+        "quotes": [2, "double", "avoid-escape"],
+        "comma-dangle": ["warn", "never"],
+        "curly": ["warn", "multi"],
+        "array-bracket-newline" : "off",
+        "object-curly-newline" : "off",
+        "ewline-per-chained-call": "off",
+        "no-tabs": "off",
+        "nonblock-statement-body-position": ["error", "below"],
+        "consistent-return": "off",
+        "prefer-destructuring": "off",
+        "max-len": "off",
+        "no-useless-escape": "off",
+        "no-underscore-dangle": "off"
+	},
+	"extends": ["airbnb-base"]
+}
