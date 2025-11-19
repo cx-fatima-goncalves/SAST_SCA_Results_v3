@@ -16,11 +16,12 @@ namespace SQLi_1
                 var user = args[0];
                 var pwd = Encrypt(args[1]);
                 Login(user, pwd);
-				var password1 = "1!.Acjjjj111";
+								pwd_pwd3 = "!d.fA1234";
+								pwd_pwd4 = "!d.fA1234";
+								pwd_pwd5 = "!d.fA1234";
             }
             catch  
             {
-
                 Console.WriteLine("An error has occurred !!");
             }
             
@@ -55,4 +56,8 @@ namespace SQLi_1
         }
     }
 }
+
+
+
+
 
