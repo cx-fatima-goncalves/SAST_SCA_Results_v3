@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,15 +16,13 @@ namespace SQLi_1
                 var user = args[0];
                 var pwd = Encrypt(args[1]);
                 Login(user, pwd);
-				var password = "1!.Acjjjj";
-				var password = "1123456dD.";
             }
-            catch  
+            catch
             {
 
                 Console.WriteLine("An error has occurred !!");
             }
-            
+
         }
 
         private static  string Encrypt(string plain)
@@ -38,22 +36,26 @@ namespace SQLi_1
             {
                 using (var conn = new SqlConnection("conn..."))
                 {
-                    var sql = "SELECT * FROM Users WHERE username = '" + username + "' AND pwd = '" + password + "'";
+                    // Use a parameterized query to prevent SQL injection.
+                    // User-supplied values are bound as SqlParameter objects,
+                    // never concatenated into the SQL string.
+                    var sql = "SELECT * FROM Users WHERE username = @username AND pwd = @password";
                     using (var cmd = new SqlCommand(sql))
                     {
                         cmd.Connection = conn;
+                        cmd.Parameters.AddWithValue("@username", username);
+                        cmd.Parameters.AddWithValue("@password", password);
                         cmd.ExecuteScalar();
                     }
 
                 }
             }
-            catch  
+            catch
             {
 
                 Console.WriteLine("An error has occurred !!");
             }
-           
+
         }
     }
 }
-
