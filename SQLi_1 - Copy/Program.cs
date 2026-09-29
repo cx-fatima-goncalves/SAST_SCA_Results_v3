@@ -19,12 +19,12 @@ namespace SQLi_1
 				var password = "1!.Acjjjj";
 				var password = "1123456dD.";
             }
-            catch  
+            catch
             {
 
                 Console.WriteLine("An error has occurred !!");
             }
-            
+
         }
 
         private static  string Encrypt(string plain)
@@ -32,27 +32,35 @@ namespace SQLi_1
             return plain;
         }
 
-        private static void Login(string username,string password)
+        private static void Login(string username, string password)
+        {
+            Login(username, password, "conn...");
+        }
+
+        // Internal overload accepts a connection string so that tests can supply
+        // a known-invalid connection string and verify command construction.
+        internal static void Login(string username, string password, string connectionString)
         {
             try
             {
-                using (var conn = new SqlConnection("conn..."))
+                using (var conn = new SqlConnection(connectionString))
                 {
-                    var sql = "SELECT * FROM Users WHERE username = '" + username + "' AND pwd = '" + password + "'";
-                    using (var cmd = new SqlCommand(sql))
+                    // Use a parameterized query to prevent SQL injection.
+                    // Parameters are passed separately from the SQL text, so user-supplied
+                    // values are never interpreted as SQL syntax.
+                    var sql = "SELECT * FROM Users WHERE username = @username AND pwd = @pwd";
+                    using (var cmd = new SqlCommand(sql, conn))
                     {
-                        cmd.Connection = conn;
+                        cmd.Parameters.AddWithValue("@username", username);
+                        cmd.Parameters.AddWithValue("@pwd", password);
                         cmd.ExecuteScalar();
                     }
-
                 }
             }
-            catch  
+            catch
             {
-
                 Console.WriteLine("An error has occurred !!");
             }
-           
         }
     }
 }
