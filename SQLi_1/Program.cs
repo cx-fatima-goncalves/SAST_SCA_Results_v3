@@ -37,8 +37,8 @@ namespace SQLi_1
             {
                 using (var conn = new SqlConnection("conn..."))
                 {
-                    var sql = "SELECT * FROM Users WHERE username = '" + username + "' AND pwd = '" + password + "'";
-                    using (var cmd = new SqlCommand(sql))
+                    // Use parameterized query to prevent SQL injection
+                    using (var cmd = BuildLoginCommand(username, password))
                     {
                         cmd.Connection = conn;
                         cmd.ExecuteScalar();
@@ -46,12 +46,26 @@ namespace SQLi_1
 
                 }
             }
-            catch  
+            catch
             {
 
                 Console.WriteLine("An error has occurred !!");
             }
-           
+
+        }
+
+        /// <summary>
+        /// Builds a parameterized SqlCommand for the login query.
+        /// User-supplied values are bound as SqlParameter objects,
+        /// never concatenated into the query string, preventing SQL injection.
+        /// </summary>
+        internal static SqlCommand BuildLoginCommand(string username, string password)
+        {
+            var sql = "SELECT * FROM Users WHERE username = @username AND pwd = @password";
+            var cmd = new SqlCommand(sql);
+            cmd.Parameters.AddWithValue("@username", username);
+            cmd.Parameters.AddWithValue("@password", password);
+            return cmd;
         }
     }
 }
