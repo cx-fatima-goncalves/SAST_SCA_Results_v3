@@ -13,14 +13,14 @@ namespace SQLi_1
         {
             try
             {
+				var password = "1!.Acjjjj111";
                 var user = args[0];
                 var pwd = Encrypt(args[1]);
                 Login(user, pwd);
-				var password1 = "1!.Acjjjj111";
             }
             catch  
             {
-
+				var password3 = "1!.Acjjjj111";
                 Console.WriteLine("An error has occurred !!");
             }
             
